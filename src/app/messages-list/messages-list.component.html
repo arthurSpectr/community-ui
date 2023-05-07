@@ -1,5 +1,6 @@
+<app-message-form (message)="onMessageEmit($event)" (editedMessage)="onMessageEditEmit($event)"></app-message-form>
 
 <div *ngFor="let message of messages">
-  <app-message [message]="message"></app-message>
+  <app-message [message]="message" (delMessage)="onDeleteMessage($event)"></app-message>
 </div>
 

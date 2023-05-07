@@ -9,7 +9,8 @@ import {MessageService} from "../service/message.service";
 })
 export class MessagesListComponent {
 
-  messages: Message[] = [new Message('1', 'first'), new Message('2', 'second'), new Message('3', 'third')];
+  // messages: Message[] = [new Message('1', 'first'), new Message('2', 'second'), new Message('3', 'third')];
+  messages: Message[] = [];
 
   constructor(public service:MessageService) {
   }
@@ -21,4 +22,36 @@ export class MessagesListComponent {
     })
   }
 
+  onMessageEmit(msg: any) {
+    console.log('message emitted - ' + JSON.stringify(msg))
+    this.messages.push(msg)
+  }
+
+  onMessageEditEmit(msg: any) {
+    console.log('updated message emitted')
+    let index = this.getIndex(this.messages, msg.id)
+
+    if(index !== -1) {
+      this.messages.splice(index, 1, msg)
+    }
+
+
+  }
+
+  getIndex(messages: Message[], index: string): number {
+
+    let msg = this.messages.find(elem => elem.id === index)
+
+    if(msg !== undefined) {
+      return this.messages.indexOf(msg)
+    }
+
+
+    return -1;
+  }
+
+  onDeleteMessage(msg: any) {
+    let index = this.getIndex(this.messages, msg.id)
+    this.messages.splice(index, 1)
+  }
 }

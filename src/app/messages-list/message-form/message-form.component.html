@@ -1,0 +1,4 @@
+<form [formGroup]="form">
+  <input type="text" placeholder="enter message" formControlName="text" [(ngModel)]="msgEdit.text">
+  <button type="submit" (click)="saveMessage()">Save</button>
+</form>

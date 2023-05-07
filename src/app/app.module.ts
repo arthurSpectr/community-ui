@@ -6,19 +6,25 @@ import { AppComponent } from './app.component';
 import { MessagesListComponent } from './messages-list/messages-list.component';
 import {MessageComponent} from "./messages-list/messsage/message.component";
 import {HttpClientModule} from "@angular/common/http";
+import { MessageFormComponent } from './messages-list/message-form/message-form.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {DataService} from "./service/data.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     MessagesListComponent,
-    MessageComponent
+    MessageComponent,
+    MessageFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

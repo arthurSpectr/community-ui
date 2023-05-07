@@ -1,3 +1,7 @@
 <div style="color: cornflowerblue">
   {{message.id + ' ' + message.text}}
+  <span>
+    <input type="button" value="Edit" (click)="edit()">
+    <input type="button" value="X" (click)="delete()">
+  </span>
 </div>
